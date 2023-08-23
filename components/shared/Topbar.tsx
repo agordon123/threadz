@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
-
+import {dark} from '@clerk/themes';
 //Navbar on HomePage  SignedIn and SignOutButton are from Clerk, no need for turnery inline jsx
 function Topbar() {
   return (
@@ -22,7 +22,7 @@ function Topbar() {
                 </SignOutButton>
             </SignedIn>
         </div>
-        <OrganizationSwitcher appearance={{elements:{
+        <OrganizationSwitcher appearance={{ baseTheme: dark, elements:{
             organizationSwitcherTrigger: "py-2 px-4",
         }}} />
       </div>
