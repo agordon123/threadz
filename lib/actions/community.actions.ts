@@ -1,9 +1,9 @@
 "use server";
 
 import { FilterQuery, SortOrder } from "mongoose";
-import Community from "@/model/community.model";
-import User from "@/model/user.model";
-import Thread from "@/model/thread.model";
+import Community from "@/models/community.model";
+import User from "@/models/user.model";
+import Thread from "@/models/thread.model";
 import { connectToDB } from "../mongoose";
 
 export async function createCommunity(
