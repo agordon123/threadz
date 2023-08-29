@@ -1,3 +1,7 @@
+/**
+ * Connects to MongoDB using Mongoose.
+ * @returns {Promise<void>} A Promise that resolves when the connection is established.
+ */
 import mongoose from "mongoose";
 
 let isConnected = false; // Variable to track the connection status

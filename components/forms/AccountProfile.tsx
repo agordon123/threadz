@@ -1,3 +1,9 @@
+/**
+ * Renders a form for editing user profile information, including name, username, bio, and profile photo.
+ * @param user - The user object containing the current user's information.
+ * @param btnTitle - The title to display on the submit button.
+ * @returns A form component with input fields for editing user profile information.
+ */
 "use client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -5,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,7 +29,7 @@ import { updateUser } from "@/lib/actions/user.actions";
 interface Props {
   user: {
     id: string;
-    objectID: string;
+    objectId: string;
     username: string;
     name: string;
     bio: string;

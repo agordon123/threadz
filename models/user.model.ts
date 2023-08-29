@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+/**
+ * User schema for MongoDB.
+ */
 const userSchema = new mongoose.Schema({
   id: {
     type: String,
@@ -34,6 +37,9 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
+/**
+ * User model for MongoDB.
+ */
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;

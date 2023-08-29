@@ -1,3 +1,7 @@
+/**
+ * Validates thread and comment objects.
+ * @packageDocumentation
+ */
 import * as z from "zod";
 
 export const ThreadValidation = z.object({

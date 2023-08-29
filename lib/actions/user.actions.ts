@@ -7,6 +7,12 @@ import Community from "@/models/community.model";
 import Thread from "@/models/thread.model";
 import { connectToDB } from "../mongoose";
 import User from "@/models/user.model";
+/**
+ * Fetches a user from the database and populates their communities.
+ * @param userId - The ID of the user to fetch.
+ * @returns A Promise that resolves to the user object with populated communities.
+ * @throws An error if the user cannot be fetched from the database.
+ */
 export async function fetchUser(userId: string) {
   try {
     connectToDB();
@@ -29,6 +35,12 @@ interface Params {
   path: string;
 }
 
+/**
+ * Updates a user's information in the database.
+ * @param {Params} params - An object containing the user's ID, bio, name, path, username, and image.
+ * @returns {Promise<void>} - A Promise that resolves when the user's information has been updated.
+ * @throws {Error} - If there was an error creating/updating the user.
+ */
 export async function updateUser({
   userId,
   bio,
@@ -60,6 +72,12 @@ export async function updateUser({
   }
 }
 
+/**
+ * Fetches all threads authored by the user with the given userId.
+ * @param userId The id of the user whose threads to fetch.
+ * @returns A Promise that resolves to an array of threads authored by the user.
+ * @throws An error if there was a problem fetching the threads.
+ */
 export async function fetchUserPosts(userId: string) {
   try {
     connectToDB();
@@ -93,6 +111,15 @@ export async function fetchUserPosts(userId: string) {
 }
 
 // Almost similar to Thead (search + pagination) and Community (search + pagination)
+/**
+ * Fetches a list of users based on the provided search criteria.
+ * @param userId - The ID of the current user.
+ * @param searchString - The search string to filter users by (optional).
+ * @param pageNumber - The page number to fetch (optional, defaults to 1).
+ * @param pageSize - The number of users to fetch per page (optional, defaults to 20).
+ * @param sortBy - The sort order for the fetched users (optional, defaults to "desc").
+ * @returns An object containing the fetched users and a boolean indicating if there are more users beyond the current page.
+ */
 export async function fetchUsers({
   userId,
   searchString = "",
@@ -151,6 +178,12 @@ export async function fetchUsers({
   }
 }
 
+/**
+ * Retrieves all child threads (replies) created by a user, excluding the ones created by the same user.
+ * @param userId - The ID of the user whose replies are being fetched.
+ * @returns A Promise that resolves to an array of child threads (replies) created by the user.
+ * @throws An error if there was an issue fetching the replies.
+ */
 export async function getActivity(userId: string) {
   try {
     connectToDB();

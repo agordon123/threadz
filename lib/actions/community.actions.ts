@@ -6,6 +6,17 @@ import User from "@/models/user.model";
 import Thread from "@/models/thread.model";
 import { connectToDB } from "../mongoose";
 
+/**
+ * Creates a new community with the provided information and associates it with the user with the provided id.
+ * @param id - The unique id of the community.
+ * @param name - The name of the community.
+ * @param username - The username of the community.
+ * @param image - The image of the community.
+ * @param bio - The bio of the community.
+ * @param createdById - The unique id of the user who created the community.
+ * @returns The created community object.
+ * @throws An error if the user with the provided id is not found or if there is an error creating the community.
+ */
 export async function createCommunity(
   id: string,
   name: string,
@@ -68,6 +79,12 @@ export async function fetchCommunityDetails(id: string) {
   }
 }
 
+/**
+ * Fetches community posts by ID and populates the threads with author and children information.
+ * @param id - The ID of the community to fetch posts for.
+ * @returns A Promise that resolves to the community posts with populated threads.
+ * @throws An error if there was a problem fetching the community posts.
+ */
 export async function fetchCommunityPosts(id: string) {
   try {
     connectToDB();
@@ -101,6 +118,16 @@ export async function fetchCommunityPosts(id: string) {
   }
 }
 
+/**
+ * Fetches communities based on search criteria and pagination options.
+ * @param {Object} options - The options object.
+ * @param {string} [options.searchString=""] - The search string to filter communities by name or username.
+ * @param {number} [options.pageNumber=1] - The page number to fetch.
+ * @param {number} [options.pageSize=20] - The number of communities to fetch per page.
+ * @param {SortOrder} [options.sortBy="desc"] - The sort order for the fetched communities.
+ * @returns {Promise<{communities: Community[], isNext: boolean}>} - The fetched communities and a boolean indicating if there are more communities beyond the current page.
+ * @throws {Error} - If there is an error fetching the communities.
+ */
 export async function fetchCommunities({
   searchString = "",
   pageNumber = 1,
@@ -157,6 +184,13 @@ export async function fetchCommunities({
   }
 }
 
+/**
+ * Adds a member to a community.
+ * @param communityId The unique id of the community.
+ * @param memberId The unique id of the member to add.
+ * @returns The updated community object.
+ * @throws An error if the community or user is not found, or if the user is already a member of the community.
+ */
 export async function addMemberToCommunity(
   communityId: string,
   memberId: string
@@ -199,6 +233,13 @@ export async function addMemberToCommunity(
   }
 }
 
+/**
+ * Removes a user from a community.
+ * @param userId - The ID of the user to remove.
+ * @param communityId - The ID of the community to remove the user from.
+ * @returns A promise that resolves to an object with a success property set to true if the user was removed successfully.
+ * @throws An error if the user or community is not found, or if there is an error removing the user from the community.
+ */
 export async function removeUserFromCommunity(
   userId: string,
   communityId: string
@@ -240,6 +281,15 @@ export async function removeUserFromCommunity(
   }
 }
 
+/**
+ * Updates the information of a community.
+ * @param communityId - The ID of the community to update.
+ * @param name - The new name of the community.
+ * @param username - The new username of the community.
+ * @param image - The new image of the community.
+ * @returns The updated community.
+ * @throws An error if the community is not found or if there is an error updating the information.
+ */
 export async function updateCommunityInfo(
   communityId: string,
   name: string,
@@ -267,6 +317,12 @@ export async function updateCommunityInfo(
   }
 }
 
+/**
+ * Deletes a community and all associated threads and removes the community from all users who are part of it.
+ * @param communityId The ID of the community to be deleted.
+ * @returns The deleted community.
+ * @throws An error if the community is not found.
+ */
 export async function deleteCommunity(communityId: string) {
   try {
     connectToDB();

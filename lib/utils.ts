@@ -6,13 +6,23 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// created by chatgpt
+
+/**
+ * Checks if the given string is a base64-encoded image.
+ * @param imageData - The string to check.
+ * @returns True if the string is a base64-encoded image, false otherwise.
+ */
 export function isBase64Image(imageData: string) {
   const base64Regex = /^data:image\/(png|jpe?g|gif|webp);base64,/;
   return base64Regex.test(imageData);
 }
 
-// created by chatgpt
+
+/**
+ * Formats a date string into a human-readable format with time and date.
+ * @param dateString - The date string to format.
+ * @returns A formatted string with time and date.
+ */
 export function formatDateString(dateString: string) {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -31,7 +41,12 @@ export function formatDateString(dateString: string) {
   return `${time} - ${formattedDate}`;
 }
 
-// created by chatgpt
+
+/**
+ * Formats the thread count into a human-readable string.
+ * @param count The number of threads.
+ * @returns A string representing the thread count.
+ */
 export function formatThreadCount(count: number): string {
   if (count === 0) {
     return "No Threads";

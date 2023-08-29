@@ -1,3 +1,8 @@
+/**
+ * Renders the bottom bar component with links to different pages.
+ * @returns JSX.Element
+ */
+
 "use client";
 
 import Image from "next/image";

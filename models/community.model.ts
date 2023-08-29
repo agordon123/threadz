@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+/**
+ * Represents a community in the application.
+ */
 const communitySchema = new mongoose.Schema({
   id: {
     type: String,
@@ -34,6 +37,9 @@ const communitySchema = new mongoose.Schema({
   ],
 });
 
+/**
+ * The Community model.
+ */
 const Community =
   mongoose.models.Community || mongoose.model("Community", communitySchema);
 
